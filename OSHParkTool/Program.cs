@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,9 @@ namespace OSHParkTool
     {
         static void Main(string[] args)
         {
+            AppDomain currentDomain = AppDomain.CurrentDomain;
+            currentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+
             Dictionary<string, string> rules = new Dictionary<string, string>();
             rules.Add("CADCAM Top Copper.TXT", ".GTL");
             rules.Add("CADCAM Bottom Copper.TXT", ".GBL");
@@ -38,22 +42,41 @@ namespace OSHParkTool
             if (count > 0)
             {
                 int i = 0;
-                foreach (string file in files)
+                using (ZipArchive zip = ZipFile.Open(Path.Combine(directory, "OSH Park.zip"), ZipArchiveMode.Create))
                 {
-                    if (rules.Keys.Any(r => file.Contains(r)))
+                    foreach (string file in files)
                     {
-                        string key = rules.Keys.First(r => file.Contains(r));
-                        string extension = rules[key];
-                        string newFile = Path.ChangeExtension(file, extension);
-                        File.Move(file, newFile);
-                        Console.WriteLine(newFile);
-                        i++;
+                        if (rules.Keys.Any(r => file.Contains(r)))
+                        {
+                            string key = rules.Keys.First(r => file.Contains(r));
+                            string extension = rules[key];
+                            string newFile = Path.ChangeExtension(file, extension);
+                            
+                            //File.Move(file, newFile);
+                            zip.CreateEntryFromFile(file, Path.GetFileName(newFile));
+                            Console.WriteLine("Added file to zip: " + Path.GetFileName(newFile));
+                            i++;
+                        }
                     }
                 }
+                
+                    
+                
+
             }
             Console.WriteLine("Press any key to exit.");
             Console.Read();
             
+        }
+
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Exception ex = (Exception)e.ExceptionObject;
+            Console.WriteLine("Exception caught : " + ex.Message);
+            //Console.WriteLine("Runtime terminating: {0}", e.IsTerminating);
+            Console.WriteLine("Press any key to exit.");
+            Console.Read();
+            Environment.Exit(0);
         }
     }
 }
