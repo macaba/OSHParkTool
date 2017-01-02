@@ -22,10 +22,10 @@ namespace OSHParkTool
             rules.Add("CADCAM Bottom Solder Resist.TXT", ".GBS");
             rules.Add("CADCAM Top Silk Screen.TXT", ".GTO");
             rules.Add("CADCAM Bottom Silk Screen.TXT", ".GBO");
-            rules.Add("CADCAM Mech 1.TXT", ".GKO");     //Board outline
-            rules.Add("CADCAM Mech 2.TXT", ".GKO");     //Board outline
-            rules.Add("CADCAM Mech 3.TXT", ".GKO");     //Board outline
-            rules.Add("CADCAM Mech 4.TXT", ".GKO");     //Board outline
+            rules.Add("CADCAM Mechanical 1.TXT", ".GKO");     //Board outline
+            rules.Add("CADCAM Mechanical 2.TXT", ".GKO");     //Board outline
+            rules.Add("CADCAM Mechanical 3.TXT", ".GKO");     //Board outline
+            rules.Add("CADCAM Mechanical 4.TXT", ".GKO");     //Board outline
             rules.Add("CADCAM Drill.TXT", ".XLN");
             //To do: add rules for Inner 1 and Inner 2   (G2L, G3L)
 
