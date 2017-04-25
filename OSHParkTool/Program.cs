@@ -18,6 +18,10 @@ namespace OSHParkTool
             Dictionary<string, string> rules = new Dictionary<string, string>();
             rules.Add("CADCAM Top Copper.TXT", ".GTL");
             rules.Add("CADCAM Bottom Copper.TXT", ".GBL");
+            rules.Add("CADCAM Inner 1.TXT", ".G2L");
+            rules.Add("CADCAM Inner 2.TXT", ".G3L");
+            rules.Add("CADCAM Inner  1.TXT", ".G2L");
+            rules.Add("CADCAM Inner  2.TXT", ".G3L");
             rules.Add("CADCAM Top Solder Resist.TXT", ".GTS");
             rules.Add("CADCAM Bottom Solder Resist.TXT", ".GBS");
             rules.Add("CADCAM Top Silk Screen.TXT", ".GTO");
@@ -27,7 +31,6 @@ namespace OSHParkTool
             rules.Add("CADCAM Mechanical 3.TXT", ".GKO");     //Board outline
             rules.Add("CADCAM Mechanical 4.TXT", ".GKO");     //Board outline
             rules.Add("CADCAM Drill.TXT", ".XLN");
-            //To do: add rules for Inner 1 and Inner 2   (G2L, G3L)
 
             string directory = new Uri(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase)).LocalPath;
             Console.WriteLine("Source directory: " + directory);
