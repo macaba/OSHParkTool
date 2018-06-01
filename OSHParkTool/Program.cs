@@ -32,6 +32,23 @@ namespace OSHParkTool
             rules.Add("CADCAM Mechanical 4.TXT", ".GKO");     //Board outline
             rules.Add("CADCAM Drill.TXT", ".XLN");
 
+            //New proteus
+            rules.Add("CADCAM Top Copper.GBR", ".GTL");
+            rules.Add("CADCAM Bottom Copper.GBR", ".GBL");
+            rules.Add("CADCAM Inner 1.GBR", ".G2L");
+            rules.Add("CADCAM Inner 2.GBR", ".G3L");
+            rules.Add("CADCAM Inner  1.GBR", ".G2L");
+            rules.Add("CADCAM Inner  2.GBR", ".G3L");
+            rules.Add("CADCAM Top Solder Resist.GBR", ".GTS");
+            rules.Add("CADCAM Bottom Solder Resist.GBR", ".GBS");
+            rules.Add("CADCAM Top Silk Screen.GBR", ".GTO");
+            rules.Add("CADCAM Bottom Silk Screen.GBR", ".GBO");
+            rules.Add("CADCAM Mechanical 1.GBR", ".GKO");     //Board outline
+            rules.Add("CADCAM Mechanical 2.GBR", ".GKO");     //Board outline
+            rules.Add("CADCAM Mechanical 3.GBR", ".GKO");     //Board outline
+            rules.Add("CADCAM Mechanical 4.GBR", ".GKO");     //Board outline
+            rules.Add("CADCAM Drill.DRL", ".XLN");
+
             string directory = new Uri(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase)).LocalPath;
             Console.WriteLine("Source directory: " + directory);
             string[] files = Directory.GetFiles(directory);
